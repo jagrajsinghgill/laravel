@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Laravel Project - Profile">
   @include('partials.navigation', ['showPostButton' => true])
 
   <main class="-mx-4 flex grow flex-col gap-4 overflow-y-auto px-4 py-4">

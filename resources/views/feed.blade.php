@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Laravel Project - Feed">
 	@include('partials.navigation')
 
 	<!-- Content -->
