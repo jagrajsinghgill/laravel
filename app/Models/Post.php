@@ -33,4 +33,33 @@ class Post extends Model
     {
         return $this->hasMany(Post::class, 'parent_id');
     }
+
+    public function likes() : HasMany
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function reposts() : HasMany
+    {
+        return $this->hasMany(Post::class, 'repost_of_id');
+    }
+
+    public function repostOf() : BelongsTo
+    {
+        return $this->belongsTo(Post::class, 'repost_of_id');
+    }
+
+    public function isRepost() : bool
+    {
+        return $this->repost_of_id != null;
+    }
+
+    public static function publish(Profile $profile, string $content) : self {
+        return static::create([
+            'profile_id'=> $profile->id,
+            'content' => $content,
+            'parent_id' => null,
+            'repost_of_id' => null,
+        ]);
+    }
 }
